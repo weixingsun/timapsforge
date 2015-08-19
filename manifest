@@ -1,0 +1,19 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.2
+apiversion: 2
+description: Ti module wrapping mapsforge 0.5.1
+author: Weixing Sun
+license: WSN
+copyright: Copyright (c) 2015 by WSN
+
+
+# these should not be edited
+name: mapsforge
+moduleid: ti.mapsforge
+guid: 6f903d68-e39e-407b-b9e4-2f95851e2164
+platform: android
+architectures: armeabi armeabi-v7a x86
+minsdk: 4.1.0.GA

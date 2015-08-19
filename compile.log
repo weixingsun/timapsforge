@@ -1,0 +1,141 @@
+Buildfile: /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build.xml
+
+python.set.exec:
+
+python.check:
+     [echo] Testing for Python
+     [exec] Python 2.7.6
+
+init:
+
+process.annotations:
+
+generate.v8.bindings:
+     [java] Generating /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/generated/jni/sc.mapsforge.MapsforgeModule.h
+     [java] Generating /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/generated/jni/sc.mapsforge.MapsforgeModule.cpp
+     [java] Generating /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/generated/jni/sc.mapsforge.MapsforgeViewProxy.h
+     [java] Generating /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/generated/jni/sc.mapsforge.MapsforgeViewProxy.cpp
+
+generate.bindings:
+
+pre.compile:
+
+js.compile:
+
+ndk.build:
+    [mkdir] Created dir: /var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated
+     [copy] Copying 43 files to /var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated
+     [exec] Android NDK: WARNING:jni/Android.mk:sc.mapsforge: non-system libraries in linker flags: -lkroll-v8    
+     [exec] Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+     [exec] Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+     [exec] Android NDK:     current module    
+     [exec] Android NDK: WARNING:jni/Android.mk:sc.mapsforge: non-system libraries in linker flags: -lkroll-v8    
+     [exec] Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+     [exec] Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+     [exec] Android NDK:     current module    
+     [exec] Android NDK: WARNING:jni/Android.mk:sc.mapsforge: non-system libraries in linker flags: -lkroll-v8    
+     [exec] Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+     [exec] Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+     [exec] Android NDK:     current module    
+     [exec] jni/Android.mk:35: warning: overriding commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.cpp'
+     [exec] jni/Android.mk:35: warning: ignoring old commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.cpp'
+     [exec] jni/Android.mk:38: warning: overriding commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/BootstrapJS.cpp'
+     [exec] jni/Android.mk:38: warning: ignoring old commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/BootstrapJS.cpp'
+     [exec] jni/Android.mk:35: warning: overriding commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.cpp'
+     [exec] jni/Android.mk:35: warning: ignoring old commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.cpp'
+     [exec] jni/Android.mk:38: warning: overriding commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/BootstrapJS.cpp'
+     [exec] jni/Android.mk:38: warning: ignoring old commands for target `/private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/BootstrapJS.cpp'
+     [exec] [armeabi] Compile++ thumb: sc.mapsforge <= sc.mapsforge.MapsforgeModule.cpp
+     [exec] [armeabi] Compile++ thumb: sc.mapsforge <= sc.mapsforge.MapsforgeViewProxy.cpp
+     [exec] [armeabi] Compile++ thumb: sc.mapsforge <= MapsforgeBootstrap.cpp
+     [exec] In file included from jni/../MapsforgeBootstrap.cpp:17:0:
+     [exec] /private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.gperf:14:28: warning: declaration 'struct titanium::bindings::BindEntry' does not declare anything [enabled by default]
+     [exec]  struct titanium::bindings::BindEntry;
+     [exec]                             ^
+     [exec] [armeabi] SharedLibrary  : libsc.mapsforge.so
+     [exec] [armeabi] Install        : libsc.mapsforge.so => libs/armeabi/libsc.mapsforge.so
+     [exec] [armeabi] Install        : libstlport_shared.so => libs/armeabi/libstlport_shared.so
+     [exec] [armeabi-v7a] Compile++ thumb: sc.mapsforge <= sc.mapsforge.MapsforgeModule.cpp
+     [exec] [armeabi-v7a] Compile++ thumb: sc.mapsforge <= sc.mapsforge.MapsforgeViewProxy.cpp
+     [exec] [armeabi-v7a] Compile++ thumb: sc.mapsforge <= MapsforgeBootstrap.cpp
+     [exec] In file included from jni/../MapsforgeBootstrap.cpp:17:0:
+     [exec] /private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.gperf:14:28: warning: declaration 'struct titanium::bindings::BindEntry' does not declare anything [enabled by default]
+     [exec]  struct titanium::bindings::BindEntry;
+     [exec]                             ^
+     [exec] [armeabi-v7a] SharedLibrary  : libsc.mapsforge.so
+     [exec] [armeabi-v7a] Install        : libsc.mapsforge.so => libs/armeabi-v7a/libsc.mapsforge.so
+     [exec] [armeabi-v7a] Install        : libstlport_shared.so => libs/armeabi-v7a/libstlport_shared.so
+     [exec] [x86] Compile++      : sc.mapsforge <= sc.mapsforge.MapsforgeModule.cpp
+     [exec] [x86] Compile++      : sc.mapsforge <= sc.mapsforge.MapsforgeViewProxy.cpp
+     [exec] [x86] Compile++      : sc.mapsforge <= MapsforgeBootstrap.cpp
+     [exec] In file included from jni/../MapsforgeBootstrap.cpp:17:0:
+     [exec] /private/var/folders/m0/b7ng953d1_34jj05yx_m9y640000gn/T/nzmessenger/mapsforge-generated/KrollGeneratedBindings.gperf:14:28: warning: declaration 'struct titanium::bindings::BindEntry' does not declare anything [enabled by default]
+     [exec]  struct titanium::bindings::BindEntry;
+     [exec]                             ^
+     [exec] [x86] SharedLibrary  : libsc.mapsforge.so
+     [exec] [x86] Install        : libsc.mapsforge.so => libs/x86/libsc.mapsforge.so
+     [exec] [x86] Install        : libstlport_shared.so => libs/x86/libstlport_shared.so
+     [move] Moving 43 files to /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/generated
+     [copy] Copying 3 files to /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/libs
+
+check.build.arch:
+     [echo] Architectures in manifest: armeabi armeabi-v7a x86
+     [echo] Compiled binary architectures: armeabi;armeabi-v7a;x86
+
+ndk.build.local:
+
+compile:
+    [javac] Compiling 1 source file to /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/build/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+
+post.compile:
+
+pre.dist:
+
+dist:
+      [jar] Building jar: /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/dist/mapsforge.jar
+
+post.jar:
+
+python.set.exec:
+
+python.check:
+     [echo] Testing for Python
+     [exec] Python 2.7.6
+
+init:
+
+pre.docgen:
+
+docgen:
+     [exec] Traceback (most recent call last):
+     [exec] File "/Users/nzmessenger/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/module/builder.py", line 255, in <module>
+     [exec] main(sys.argv)
+     [exec] File "/Users/nzmessenger/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/module/builder.py", line 194, in main
+     [exec] android_sdk = AndroidSDK(android_sdk_path)
+     [exec] File "/Users/nzmessenger/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/androidsdk.py", line 49, in __init__
+     [exec] self.set_api_level(api_level)
+     [exec] File "/Users/nzmessenger/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/androidsdk.py", line 53, in set_api_level
+     [exec] self.find_platform_dir()
+     [exec] File "/Users/nzmessenger/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/androidsdk.py", line 127, in find_platform_dir
+     [exec] old_style_dir = os.path.join(self.android_sdk, 'platforms', android_api_levels[api_level])
+     [exec] KeyError: 21
+
+post.docgen:
+
+check.respackage:
+      [zip] Building zip: /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/dist/sc.mapsforge-android-0.2.zip
+
+libs.check:
+
+zip.libs:
+      [zip] Updating zip: /Users/nzmessenger/Documents/Appcelerator_Studio_Workspace/mapsforge/dist/sc.mapsforge-android-0.2.zip
+
+zip.metadata:
+
+clean.respackage:
+
+post.dist:
+
+BUILD SUCCESSFUL
+Total time: 11 seconds
