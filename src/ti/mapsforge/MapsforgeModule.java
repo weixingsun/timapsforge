@@ -124,8 +124,8 @@ public class MapsforgeModule extends KrollModule {
 		String sql = select + from+ where + order; //,admin,country_code
 		*/
 		//String[] args = new String[]{name}; //tbl MATCH 'col: company';
-		String updateSql = sql.replaceAll("'", "''").replaceAll("\"", "\"\"");
-		Cursor cursor = poi_db.rawQuery(updateSql, null);
+		//String updateSql = sql.replaceAll("'", "''").replaceAll("\"", "\"\"");
+		Cursor cursor = poi_db.rawQuery(sql, null);
 		List<KrollDict> list = new ArrayList<KrollDict>();
 		while (cursor.moveToNext()) {
 			KrollDict data = new KrollDict();
