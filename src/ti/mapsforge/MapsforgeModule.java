@@ -124,7 +124,8 @@ public class MapsforgeModule extends KrollModule {
 		String sql = select + from+ where + order; //,admin,country_code
 		*/
 		//String[] args = new String[]{name}; //tbl MATCH 'col: company';
-		Cursor cursor = poi_db.rawQuery(sql, null);
+		String updateSql = sql.replaceAll("'", "''").replaceAll("\"", "\"\"");
+		Cursor cursor = poi_db.rawQuery(updateSql, null);
 		List<KrollDict> list = new ArrayList<KrollDict>();
 		while (cursor.moveToNext()) {
 			KrollDict data = new KrollDict();
@@ -140,12 +141,12 @@ public class MapsforgeModule extends KrollModule {
 			//String country_code = cursor.getString(4);
 			//double dist = cursor.getDouble(5);	//Math.floor(Math.sqrt(dist)*100000)
 			//SavedPlace sp = new SavedPlace(fullName,admin,lat,lng,country_code);
-			Log.i(TAG, "name="+name);
+			//Log.i(TAG, "name="+name);
 			list.add(data);
 		}
 		cursor.close();
 		KrollDict[] temp = list.toArray(new KrollDict[list.size()]);
-		Log.i(TAG, "length="+temp.length);
+		//Log.i(TAG, "length="+temp.length);
 		KrollDict outter = new KrollDict();
 		outter.put("rows",temp);
 		return outter;
