@@ -15,6 +15,8 @@ import org.mapsforge.core.model.LatLong;
 
 import android.os.AsyncTask;
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import java.util.*;
 import org.json.*;
 
@@ -92,6 +94,61 @@ public class MapsforgeModule extends KrollModule {
 				callback.call(getKrollObject(),data);
 			}
 		}.start();
+	}
+	SQLiteDatabase poi_db = null;
+	public SQLiteDatabase getPoiDB(String poiDbFile){
+		if(poi_db==null) 
+			poi_db=SQLiteDatabase.openDatabase(poiDbFile, null, SQLiteDatabase.OPEN_READONLY);
+		return poi_db;
+	}
+	@Kroll.method
+	public void queryFTS(KrollDict args, KrollFunction callback) {
+	  //String id = EmbeddedAgent.startTimedEvent(name);
+	  String sql = args.getString("sql");
+	  String db = args.getString("db");
+	  callback.call(getKrollObject(), getPOIs(db,sql));
+	  //EmbeddedAgent.endTimedEvent(id);
+	}
+	public KrollDict getPOIs(String poiDbFile,String sql) {
+		String sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+		getPoiDB(sdcard+poiDbFile);
+		/*String sqlLat = gp.getLatitude()+"-lat";
+		String sqlLng = gp.getLongitude()+"-lng";
+		String sqlDist = "("+sqlLat+")*("+sqlLat+")+("+sqlLng+")*("+sqlLng+") ";
+		String uname = name.replaceAll("'", "''").replaceAll("\"", "\"\"");
+		String select = "SELECT lat,lng,pname,admin,country_code,"+sqlDist+" as dist ";
+		String from   = "  from "+POI_TABLE;
+		//String where= " where " +POI_TABLE +" match ?"; //"table MATCH 'column1:? OR column2:?'"
+		String where  = " where pname match '*"+uname+"*'";
+		String order  = " order by "+sqlDist+" asc limit 0,20";
+		String sql = select + from+ where + order; //,admin,country_code
+		*/
+		//String[] args = new String[]{name}; //tbl MATCH 'col: company';
+		Cursor cursor = poi_db.rawQuery(sql, null);
+		List<KrollDict> list = new ArrayList<KrollDict>();
+		while (cursor.moveToNext()) {
+			KrollDict data = new KrollDict();
+			double lat = cursor.getDouble(cursor.getColumnIndex("lat"));
+			double lng = cursor.getDouble(cursor.getColumnIndex("lng"));
+			String name = cursor.getString(cursor.getColumnIndex("pname"));
+			//data.put("lat",lat);
+			//data.put("lng",lng);
+			double[] arr = new double[] {lat, lng};
+			data.put("point",arr);
+			data.put("addr",name);
+			//String admin= cursor.getString(3);
+			//String country_code = cursor.getString(4);
+			//double dist = cursor.getDouble(5);	//Math.floor(Math.sqrt(dist)*100000)
+			//SavedPlace sp = new SavedPlace(fullName,admin,lat,lng,country_code);
+			Log.i(TAG, "name="+name);
+			list.add(data);
+		}
+		cursor.close();
+		KrollDict[] temp = list.toArray(new KrollDict[list.size()]);
+		Log.i(TAG, "length="+temp.length);
+		KrollDict outter = new KrollDict();
+		outter.put("rows",temp);
+		return outter;
 	}
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app){
