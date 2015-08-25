@@ -249,15 +249,15 @@ public class MapsforgeViewProxy extends TiViewProxy {
 	 * @param dict	the layer as returned on creation.
 	 */
 	@Kroll.method
-	public HashMap updateLayer(KrollDict dict) {
+	public int updateLayer(KrollDict dict) {
 		//debugMsg("updateLayer dict contains " + dict.toString());
 		if (!dict.containsKey(KEY_ID)) {
 			Log.e(TAG, "Could not find the layer ID!");
-			return null;
+			return -1;
 		}
 		if (!dict.containsKey(KEY_LAYERTYPE)) {
 			Log.e(TAG, "Could not find the layer type!");
-			return null;
+			return -1;
 		}
 		int id = TiConvert.toInt(dict.get(KEY_ID));
 		if (dict.containsKey(KEY_MOVE)) {//move
@@ -282,12 +282,12 @@ public class MapsforgeViewProxy extends TiViewProxy {
 			}
 			dict.put(KEY_ID, id);
 			mView.repaint();
-			return dict;
+			return id;
 		}else{
 			//First remove the old one
 			if (!removeLayer(id)) {
 				Log.e(TAG, "Could not update layer, does it exist?");
-				return null;
+				return -1;
 			}
 			//Create a new layer using the parameters supplied in the argument (dict).
 			String type = TiConvert.toString(dict.get(KEY_LAYERTYPE));
@@ -314,7 +314,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 	 * @param dict	dictionary with key-value pairs: {key:value}.
 	 */
 	@Kroll.method
-	public HashMap createPolyline(KrollDict dict) {
+	public int createPolyline(KrollDict dict) {
 		containsKey(dict, KEY_COORDINATES);
 		
 		Object[] coordinates = (Object[]) dict.get(KEY_COORDINATES);
@@ -333,7 +333,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 		dict.put(KEY_ID, id);
 		dict.put(KEY_LAYERTYPE, TYPE_POLYLINE);
 		
-		return dict;
+		return id;
 	}
 	
 	/**
@@ -346,7 +346,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 	 * @param dict	dictionary with key-value pairs: {key:value}.
 	 */
 	@Kroll.method
-	public HashMap createPolygon(KrollDict dict) {
+	public int createPolygon(KrollDict dict) {
 		containsKey(dict, KEY_COORDINATES);
 		
 		Object[] coordinates = (Object[]) dict.get(KEY_COORDINATES);
@@ -368,7 +368,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 		dict.put(KEY_ID, id);
 		dict.put(KEY_LAYERTYPE, TYPE_POLYGON);
 
-		return dict;
+		return id;
 	}
 	public boolean isInteger(String s) {
 		try { 
@@ -391,7 +391,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 	 * @param dict	dictionary with key-value pairs: {key:value}.
 	 */
 	@Kroll.method
-	public HashMap createMarker(KrollDict dict) {
+	public int createMarker(KrollDict dict) {
 		containsKey(dict, KEY_COORDINATE);
 		
 		Object[] coordinate = (Object[]) dict.get(KEY_COORDINATE);
@@ -436,7 +436,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 		dict.put(KEY_ID, id);
 		dict.put(KEY_LAYERTYPE, TYPE_MARKER);
 
-		return dict;
+		return id;
 	}
 	
 	/**
@@ -450,7 +450,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 	 * @param dict	dictionary with key-value pairs: {key:value}.
 	 */
 	@Kroll.method
-	public HashMap createCircle(KrollDict dict) {
+	public int createCircle(KrollDict dict) {
 		containsKey(dict, KEY_COORDINATE);
 		
 		Object[] coordinate = (Object[]) dict.get(KEY_COORDINATE);
@@ -491,7 +491,7 @@ public class MapsforgeViewProxy extends TiViewProxy {
 		dict.put(KEY_ID, id);
 		dict.put(KEY_LAYERTYPE, TYPE_CIRCLE);
 
-		return dict;
+		return id;
 	}
 	
 	/**
