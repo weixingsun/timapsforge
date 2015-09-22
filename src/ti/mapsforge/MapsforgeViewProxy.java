@@ -493,7 +493,56 @@ public class MapsforgeViewProxy extends TiViewProxy {
 
 		return id;
 	}
-	
+	//mapView.getMapPosition()..... setMapPosition(new MapPosition(pBoundingBox.getCenterPoint(), zoomLevel));
+	//mapView.fitToBoundingBox(new BoundingBox(minLat, minLng, maxLat, maxLng), 20);
+	/*public synchronized void fitToBoundingBox(final BoundingBox pBoundingBox, final int pMaximumZoom) {
+		int width = this.getWidth();
+		int height = this.getHeight();
+		if (width <= 0 || height <= 0) {
+			this.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+				@Override
+				public void onGlobalLayout() {
+					MapView.this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+					fitToBoundingBox(pBoundingBox, pMaximumZoom);
+				}
+			});
+		} else {
+			Projection projection1 = this.getProjection();
+			GeoPoint pointSouthWest = new GeoPoint(pBoundingBox.minLatitude, pBoundingBox.minLongitude);
+			GeoPoint pointNorthEast = new GeoPoint(pBoundingBox.maxLatitude, pBoundingBox.maxLongitude);
+			Point pointSW = new Point();
+			Point pointNE = new Point();
+			byte maxLvl = (byte) Math.min(pMaximumZoom, this.getMapZoomControls().getZoomLevelMax());
+			byte zoomLevel = 0;
+			while (zoomLevel < maxLvl) {
+				byte tmpZoomLevel = (byte) (zoomLevel + 1);
+				projection1.toPoint(pointSouthWest, pointSW, tmpZoomLevel);
+				projection1.toPoint(pointNorthEast, pointNE, tmpZoomLevel);
+				if (pointNE.x - pointSW.x > width) {
+					break;
+				}
+				if (pointSW.y - pointNE.y > height) {
+					break;
+				}
+				zoomLevel = tmpZoomLevel;
+			}
+			this.getMapViewPosition().setMapPosition(new MapPosition(pBoundingBox.getCenterPoint(), zoomLevel));
+		}
+	}
+	public void mView.onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			BoundingBox bb = new BoundingBox(latLong2.latitude,
+					latLong3.longitude, latLong3.latitude, latLong2.longitude);
+			Dimension dimension = this.mapView.getModel().mapViewDimension.getDimension();
+			this.mapView.getModel().mapViewPosition.setMapPosition(new MapPosition(
+							bb.getCenterPoint(),
+							LatLongUtils.zoomForBounds(
+									dimension,
+									bb,
+									this.mapView.getModel().displayModel.getTileSize())));
+		}
+	}*/
 	/**
 	 * Private methods
 	 */

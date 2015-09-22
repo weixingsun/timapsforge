@@ -94,7 +94,7 @@ public class MapsforgeView extends TiUIView {
 	private static void infoMsg(String msg) {
         Log.i(TAG, msg);
 	}
-    
+    //or implement GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener
 	final GestureDetector gestureDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener() {
         @Override
         public void onLongPress(MotionEvent e) {
@@ -116,12 +116,35 @@ public class MapsforgeView extends TiUIView {
         }
         @Override
         public boolean onDown(MotionEvent event) {
-             super.onDown(event);
+            //super.onDown(event);
             return true;
         }
-
+		@Override
+		public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+			// Scrolling uses math based on the viewport (as opposed to math using pixels).
+			// Pixel offset is the offset in screen pixels, while viewport offset is the offset within the current viewport. 
+			//float viewportOffsetX = distanceX * mCurrentViewport.width() / mContentRect.width();
+			//float viewportOffsetY = -distanceY * mCurrentViewport.height() / mContentRect.height();
+			// Updates the viewport, refreshes the display. 
+			//setViewportBottomLeft(mCurrentViewport.left+viewportOffsetX, mCurrentViewport.bottom+viewportOffsetY);
+			//e1 	The first down motion event that started the scrolling.
+			//e2 	The move motion event that triggered the current onScroll.
+			//distanceX 	The distance along the X axis that has been scrolled since the last call to onScroll. This is NOT the distance between e1 and e2.
+			//distanceY 	The distance along the Y axis that has been scrolled since the last call to onScroll. This is NOT the distance between e1 and e2.
+			//zoomToSpan();//many times to zoomOut map
+			return true;
+		}
     });
-    
+	/*final ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            mScaleFactor *= detector.getScaleFactor();
+            // Don't let the object get too small or too large.
+            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 10.0f));
+            invalidate();
+            return true;
+        }
+    }*/
 	public MapsforgeView(TiViewProxy proxy) {
 		super(proxy);
         this.act = proxy.getActivity();
@@ -148,13 +171,13 @@ public class MapsforgeView extends TiUIView {
 	}
 	
 	public void zoomToSpan() {
-			//BoundingBox bb = new BoundingBox(latLong2.latitude, latLong3.longitude, latLong3.latitude, latLong2.longitude);
-			BoundingBox bb = this.mapView.getBoundingBox();
-			Dimension dimension = this.mapView.getModel().mapViewDimension.getDimension();
-			this.mapView.getModel().mapViewPosition.setMapPosition(new MapPosition(
-							bb.getCenterPoint(),
-							LatLongUtils.zoomForBounds(
-									dimension, bb, this.mapView.getModel().displayModel.getTileSize())));
+		infoMsg("zoomToSpan()");
+		BoundingBox bb = this.mapView.getBoundingBox();
+		Dimension dimension = this.mapView.getModel().mapViewDimension.getDimension();
+		this.mapView.getModel().mapViewPosition.setMapPosition(new MapPosition(
+						bb.getCenterPoint(),
+						LatLongUtils.zoomForBounds(dimension, bb, this.mapView.getModel().displayModel.getTileSize()))
+		);
 	}
 	public void repaint(){
 		//mapView.invalidate();
