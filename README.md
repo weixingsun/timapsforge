@@ -1,6 +1,9 @@
 #mapsforge Titanium module
-This module wraps parts of the [mapsforge](https://code.google.com/p/mapsforge/) 0.5.2 (0.5.2-release) API.
-Just as mapsforge, this module is in development.
+This module wraps the following open source components of:
+[graphhopper](https://github.com/graphhopper) 0.6
+[mapsforge](https://github.com/mapsforge) 0.6.0
+[trove4j](https://bitbucket.org/trove4j/trove) 3.1
+Just as above, this module is in development.
 
 #Building
 Clone this repository.
